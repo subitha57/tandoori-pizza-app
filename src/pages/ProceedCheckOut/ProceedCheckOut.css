@@ -1,0 +1,75 @@
+
+.proceed-checkout-container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .proceed-checkout-container1 {
+  background-color: #333333;
+  color: #ffffff;
+  border-color: #666666;
+}
+
+.proceed-checkout-container1 form {
+  width: 100%;
+}
+
+.proceed-checkout-container1 label {
+  width: 150px;
+}
+
+.proceed-checkout-container1 input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.submitbtn {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.proceed-checkout-container1 {
+  position: relative;
+  /* Ensure the container is positioned */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* You might need to adjust the styles of the close icon based on your icon library */
+.close-button-icon {
+  font-size: 24px;
+  color: #000;
+  /* Adjust the color of the close icon */
+}

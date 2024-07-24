@@ -1,0 +1,13 @@
+.apply-promotion-container {
+    text-align: center;
+  }
+  .promotion .light {
+    background-color: skyblue; /* White background */
+    color: #000000; /* Black text */
+  }
+  
+  /* Dark Theme */
+  .promotion .dark {
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text */
+  }

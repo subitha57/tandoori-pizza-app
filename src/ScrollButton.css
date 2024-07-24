@@ -1,0 +1,19 @@
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px; /* Adjust this value as needed */
+  right: 10px; /* Adjust this value as needed */
+   /* Text color */
+
+  /* Adjust the height of the button */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.scroll-to-top-button:hover {
+  background-color: #388e3c; /* Darker shade of red on hover */
+}
+ 
+.scroll-to-top-button:focus {
+  outline: none; /* Remove outline on focus */
+}
+

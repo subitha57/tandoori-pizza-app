@@ -1,0 +1,38 @@
+.orderTypePopup {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 600px;
+  /* Adjust the width as needed */
+  max-width: 90%;
+  /* Maximum width to ensure it fits within the viewport */
+  max-height: 100%;
+  /* Maximum height to ensure it fits within the viewport */
+  overflow: auto;
+  /* Enable scrolling if content exceeds the modal size */
+}
+
+.Order-type {
+  text-align: center;
+}
+
+.order-type-container {
+  margin-top: 20px;
+}
+
+.button {
+  position: fixed;
+  /* Set the close button position to absolute */
+  top: 10px;
+  /* Adjust top distance */
+  right: 10px;
+  /* Adjust right distance */
+  /* Remove background */
+  border: none;
+  /* Remove border */
+  cursor: pointer;
+}

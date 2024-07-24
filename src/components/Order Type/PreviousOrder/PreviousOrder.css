@@ -1,0 +1,147 @@
+/* PreviousOrder.css */
+
+.table-container {
+  margin-top: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling on small screens */
+  background-color: antiquewhite;
+}
+h2{
+  color: navy;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  display: table;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f2f2f2;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button-container button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background-color: #0056b3;
+}
+
+.order-details {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.order-details h3 {
+  margin-bottom: 10px;
+}
+
+.order-details ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.order-details li {
+  margin-bottom: 10px;
+}
+
+.order-details li div {
+  margin-bottom: 5px;
+}
+
+/* Responsive Design */
+
+@media only screen and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+  }
+
+  td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  table {
+    font-size: 12px; /* Decrease font size on very small screens */
+  }
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-details {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  z-index: 1001; 
+}
+.back-button {
+  position: absolute;
+  top: 80px;
+  right: 130px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}
+

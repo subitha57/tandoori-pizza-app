@@ -1,0 +1,58 @@
+.explore-menu {
+    text-align: center;
+    padding: 20px;
+}
+  
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+  
+.explore-menu-text {
+    margin: 10px 0;
+}
+  
+.dark-text {
+    color: #ccc;
+}
+  
+.sticky-container {
+    position: relative;
+    top: 40px; /* Adjust this value based on your navbar height */
+    left: 0;
+    width: 100%;
+    background-color: inherit;
+    z-index: 900; /* Ensure it's below the navbar */
+    padding: 21px 0; /* Optional: add some padding around the button group */
+
+}
+  
+.explore-menu-list {
+    display: flex;
+    justify-content: center;
+}
+  
+.menu-button {
+    border-radius: 0;
+    padding: 16px 24px; /* Adjusted padding for button size */
+    font-size: 16px; /* Adjusted font size */
+}
+  
+.menu-button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+  
+.menu-button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+  
+.menu-button.active {
+    background-color: #0056b3;
+}
+  
+.dark-button.active {
+    background-color: #777;
+}
+

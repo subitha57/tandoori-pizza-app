@@ -1,0 +1,135 @@
+.customize-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: antiquewhite;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 1000; /* Ensure the popup appears above other elements */
+  width: 1100px; /* Adjust width as needed */
+  max-height: 100vh; /* Set maximum height to 80% of the viewport height */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* CustomizeForm.css */
+
+.customize-pizza-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.pizza-details,
+.customization-options {
+  flex: 1;
+  margin-right: 20px;
+}
+.login-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; /* Ensure this is higher than other content */
+}
+.pizza-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pizza-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.customization-options select,
+.customization-options input {
+  margin-bottom: 10px;
+}
+
+.ingredient-lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.ingredient-lists > div {
+  flex-basis: 100%; /* Adjust width as needed */
+
+}
+
+.price-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Horizontal Line */
+hr {
+  width: 100%;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
+/* CustomizeForm.css */
+
+.cheese-sauce {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center the items vertically */
+  margin-top: 2px;
+  background-color: white;
+}
+
+.half-dropdown {
+  width: calc(50% - 5px); /* Adjust width as needed */
+  display: flex; /* Use flexbox to align items horizontally */
+  flex-direction: column; /* Stack items vertically */
+}
+
+/* Set each dropdown to 100% width */
+.half-dropdown select {
+  width: 100%;
+}
+
+/* Add some margin between the dropdowns */
+.half-dropdown + .half-dropdown {
+  margin-left: 10px; /* Adjust margin as needed */
+}
+
+/* Horizontal Line */
+hr {
+  width: 100%;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
+@media (max-width: 768px) {
+  .customize-pizza-container {
+    flex-direction: column; /* Stack items vertically on small screens */
+  }
+
+  .pizza-details,
+  .customization-options {
+    margin-right: 0; /* Remove right margin on small screens */
+    flex-basis: 100%; /* Set full width on small screens */
+  }
+
+  .half-dropdown {
+    flex-basis: 100%; /* Set full width for dropdowns on small screens */
+  }
+}
+.customize-container {
+  width: 100%;
+  max-width: 1200px; /* Adjust max-width based on your design */
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .customize-container {
+    padding: 10px;
+  }
+}

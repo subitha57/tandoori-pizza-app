@@ -1,0 +1,66 @@
+/* src/App.css */
+
+/* Base styles for light and dark themes */
+.light-theme {
+    background-color: skyblue;
+    color: #333;
+  }
+  
+  .dark-theme {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  body {
+    min-height: 100vh;
+    background-color: skyblue;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .dark-theme body {
+    background-color: #333;
+  }
+  
+  /* Top right corner container for language selector and theme button */
+  .top-right-corner {
+    position: fixed;
+    top: 23px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Theme button styling */
+  .theme-button {
+    background: none; 
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+  }
+  
+  .dark-theme .theme-button {
+    color: white;
+  }
+  
+  .light-theme .theme-button {
+    color: black;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .top-right-corner {
+      top: 5px;
+      right: 10px;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .theme-button {
+      margin-left: 0;
+      margin-top: 5px;
+    }
+  }
+  

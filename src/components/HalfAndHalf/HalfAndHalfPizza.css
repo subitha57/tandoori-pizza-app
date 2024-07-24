@@ -1,0 +1,120 @@
+.half-and-half-container1 {
+  margin: 20px;
+  border: 2px solid black;
+  /* Border style */
+  padding: 20px;
+  margin-top: 5%;
+}
+.size-quantity-crust {
+  display: flex;
+  justify-content: space-between;
+}
+.right-half-container{
+  margin-left: 40px;
+}
+.close-icon{
+  margin-left: 90%;
+}
+.input-container {
+  flex: 1;
+  margin-right: 10px; /* Adjust margin as needed */
+}
+h1 {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 20px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 10Px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.HalfButton {
+  text-align: center;
+}
+
+h3 {
+  margin-bottom: 2%;
+  color: darkred;
+}
+
+h2 {
+  color: darkred;
+}
+
+label {
+  color: navy;
+  padding: 5px;
+  margin-top: 2%;
+}
+
+.buttonsbtn {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  table td {
+    display: block;
+    width: 100%;
+  }
+}
+
+.half-and-half-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: antiquewhite;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  /* Adjust width as needed */
+  max-width: 800px;
+  /* Set maximum width */
+  max-height: 100%;
+  /* Set maximum height */
+  overflow-y: auto;
+  /* Enable vertical scrolling if needed */
+}
+
+.half-and-half-container {
+  padding: 20px;
+}
+@media only screen and (max-width: 768px) {
+  .half-and-half-container1 {
+    display: flex;
+    flex-direction: column;
+    /* Adjust other styles as needed */
+  }
+
+  /* Adjust other styles for smaller screens */
+}

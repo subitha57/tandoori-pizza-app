@@ -1,0 +1,231 @@
+.cart {
+  margin-top: 50px;
+}
+
+.cart-items-title {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
+  align-items: center;
+  color: grey;
+  font-size: max(1vw, 12px);
+}
+
+.cart-items-item {
+  margin: 10px 0px;
+  color: black;
+}
+
+.cart-items-item img {
+  width: 50px;
+
+}
+
+.cart hr {
+  height: 1px;
+  background-color: #e2e2e2;
+  border: none;
+}
+
+.cart-items-item .cross {
+  cursor: pointer;
+
+}
+
+.cart-bottom {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  gap: max(12vw, 20px);
+}
+
+.cart-total {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-total-details {
+  display: flex;
+  justify-content: space-between;
+  color: #555;
+}
+
+.cart-total hr {
+  margin: 10px 0px;
+}
+
+.cart-total button {
+  border: none;
+  color: white;
+  background-color: tomato;
+  width: max(15vw, 200px);
+  padding: 12px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-promocode {
+  flex: 1;
+}
+
+.cart-promocode p {
+  color: #555;
+}
+
+.cart-promocode-input {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eaeaea;
+  border-radius: 4px;
+}
+
+.cart-promocode-input input {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+}
+
+.cart-promocode-input button {
+  width: max(10vw, 150px);
+  padding: 12px 5px;
+  background-color: black;
+  border: none;
+  color: white;
+  border-radius: 4px;
+}
+
+@media (max-width:750px) {
+  .cart-bottom {
+    flex-direction: column-reverse;
+  }
+
+  .cart-promocode {
+    justify-content: start;
+  }
+}
+
+.terms-and-conditions {
+  display: flex;
+  align-items: center;
+  /* Align items vertically */
+}
+
+.terms-and-conditions input[type="checkbox"] {
+  margin-right: 2px;
+  /* Adjust the margin to reduce space */
+}
+
+.selected-order-type {
+  margin-top: 0%;
+  font-size: large;
+}
+
+.order-type {
+  color: blue;
+  /* Change the color to whatever you prefer */
+}
+
+/* Cart.css */
+
+/* Coupon code input field */
+.cart-promocode-input input[type="text"] {
+  width: 200px;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Apply button */
+.cart-promocode-input button {
+  padding: 8px 20px;
+  background-color: #007bff;
+  /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-promocode-input button:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+}
+
+/* Coupon error message */
+.coupon-error {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* Light Theme */
+.cart.light {
+  background-color: skyblue;
+  /* White background */
+  color: #000000;
+  /* Black text */
+}
+
+/* Dark Theme */
+.cart.dark {
+  background-color: #342e2e;
+  /* Black background */
+  color: #ffffff;
+  /* White text */
+}
+
+.cart {
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  /* Adjust the top position as needed */
+  right: 10px;
+  /* Adjust the right position as needed */
+  cursor: pointer;
+}
+
+.language-select {
+  position: absolute;
+  top: 10px;
+  /* Adjust the top position as needed */
+  right: 60px;
+  /* Adjust the right position to position it near the theme toggle */
+  z-index: 1;
+  /* Ensure it appears above other elements */
+}
+
+.language-select select {
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.dark-theme .cart-items-title p {
+  color: white;
+}
+
+.dark-theme .cart-total h2,
+.dark-theme .cart-total-details p,
+.dark-theme .cart-total-details b {
+  color: white;
+}
+
+.dark-theme .terms-and-conditions {
+  color: white;
+}
+
+.dark-text {
+  color: white;
+}
+
+.light-text {
+  color: black;
+}

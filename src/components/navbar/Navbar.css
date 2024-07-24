@@ -1,0 +1,155 @@
+.navbar {
+    padding: 0 90px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+   /* Changed from fixed to relative */
+    max-width: 100%;
+    z-index: 1;
+}
+
+.navbar-title h1 {
+    color: navy; /* Change to your preferred blue color */
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    font-size: 22px;
+}
+
+.navbar-menu a {
+    color: navy; /* Color for the Past Orders link */
+    text-decoration: none;
+}
+
+.navbar-menu a:hover {
+    color: darkblue; /* Optional: Change color on hover for better user experience */
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar button {
+    background: transparent;
+    font-size: 16px;
+    color: #49557e;
+    border: 1px solid tomato;
+    padding: 10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.navbar button:hover {
+    background-color: #fff4f2;
+}
+
+.navbar button.sign-in {
+    color: navy; /* Color for the Sign In button text */
+    border-color: navy; /* Border color to match the text color */
+}
+
+.navbar button.sign-in:hover {
+    background-color: #f0f8ff; /* Optional: Change background color on hover */
+}
+
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #49557e;
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+.navbar-search-icon {
+    position: relative;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: tomato;
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
+
+@media (max-width: 1050px) {
+    .navbar .logo {
+        width: 140px;
+    }
+
+    .navbar-menu {
+        gap: 20px;
+        font-size: 17px;
+    }
+
+    .navbar-right {
+        gap: 30px;
+    }
+
+    .navbar-right img {
+        width: 22px;
+    }
+
+    .navbar-right button {
+        padding: 8px 35px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar .logo {
+        width: 120px;
+    }
+
+    .navbar-menu {
+        gap: 15px;
+        font-size: 16px;
+    }
+
+    .navbar-right {
+        gap: 20px;
+    }
+
+    .navbar-right img {
+        width: 20px;
+    }
+
+    .navbar-right button {
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 750px) {
+    .navbar-menu {
+        display: none;
+    }
+}
+
+.dark-mode .navbar-menu {
+    background-color: #333;
+    color: white;
+}
+
+.dark-theme .navbar-menu a {
+    color: white;
+}
+
+.dark-theme .navbar-menu a img {
+    filter: invert(1);
+}
+
+.dark-theme .navbar-menu a h1 {
+    color: white;
+}

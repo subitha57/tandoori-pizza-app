@@ -1,0 +1,168 @@
+.food-display {
+  margin-top: 50px;
+}
+
+.food-display h2 {
+  font-size: max(2vw, 24px);
+  font-weight: 600;
+  color: navy;
+}
+
+.food-item.selected {
+  animation: blink 1s infinite;
+}
+
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  margin-top: 30px;
+  gap: 30px;
+  row-gap: 50px;
+  z-index: 0;
+}
+
+.food-item {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.food-item h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.food-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.food-item-options {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.food-item-options-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.food-item-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.customize-button,
+.add-to-cart-button {
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.customize-button {
+  background-color: #ff9800;
+}
+
+.add-to-cart-button {
+  background-color: #4caf50;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1 part for cart-container, 2 parts for food display */
+  gap: 20px;
+  position: relative;
+}
+
+.cart-container {
+  display: inline-block;
+  margin-right: 2%;
+  margin-top: 15%;
+  position: sticky;
+  grid-column: 1;
+}
+
+.food-display-container {
+  grid-column: 2;
+  padding-top: 0px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr; /* Stack vertically on medium screens */
+    gap: 10px;
+  }
+
+  .cart-container {
+    grid-column: 1 / -1; /* Full width on smaller screens */
+    margin-right: 0;
+  }
+
+  .food-display-container {
+    grid-column: 1 / -1; /* Full width on smaller screens */
+  }
+
+  .food-item-buttons {
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+    gap: 8px;
+  }
+
+  .customize-button,
+  .add-to-cart-button {
+    width: 100%; /* Full width buttons on smaller screens */
+    height: 45px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-display h2 {
+    font-size: 20px; /* Adjust font size for smaller screens */
+  }
+
+  .food-display-list {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Adjust for smaller screens */
+    gap: 20px;
+    row-gap: 30px;
+  }
+
+  .food-item h3 {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .food-display h2 {
+    font-size: 18px; /* Further adjust font size for very small screens */
+  }
+
+  .food-display-list {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+    gap: 15px;
+    row-gap: 25px;
+  }
+
+  .food-item h3 {
+    font-size: 14px; /* Further adjust font size for very small screens */
+  }
+
+  .customize-button,
+  .add-to-cart-button {
+    width: 100%; /* Full width buttons on very small screens */
+    height: 40px;
+    font-size: 14px;
+  }
+}
