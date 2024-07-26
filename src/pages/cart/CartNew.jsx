@@ -5,11 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import ViewPromotions from '../../components/ViewPromotions/ViewPromotions';
 import { useTranslation } from 'react-i18next';
 import { OrderModeLabel } from '../../enums/OrderMode';
+import EditIcon from '@mui/icons-material/Edit'; // Import Material-UI Edit Icon
 
 const CartNew = ({ selectedOrderType, hideCheckoutButton }) => {
     const { t } = useTranslation(); 
     const navigate = useNavigate();
-    const { cart, removeFromCart, getTotalPriceOfCartItems, cartRestaurant, user } = useContext(StoreContext);
+    const { cart, removeFromCart, updateQuantity, getTotalPriceOfCartItems, cartRestaurant, user } = useContext(StoreContext);
     const [couponCode, setCouponCode] = useState('');
     const [appliedCoupon, setAppliedCoupon] = useState('');
     const [couponError, setCouponError] = useState('');
@@ -18,7 +19,7 @@ const CartNew = ({ selectedOrderType, hideCheckoutButton }) => {
     const [showModal, setShowModal] = useState(false);
     const [username, setUsername] = useState('');
     const [storeUID, setStoreUID] = useState(null);
-    
+
     useEffect(() => {
         const storedUsername = localStorage.getItem('username');
         if (storedUsername) {
@@ -50,6 +51,16 @@ const CartNew = ({ selectedOrderType, hideCheckoutButton }) => {
         }
     };
 
+    const handleQuantityChange = (itemId, newQuantity) => {
+        if (newQuantity > 0) {
+            updateQuantity(itemId, newQuantity);
+        }
+    };
+
+    const handleEdit = (item) => {
+        navigate('/CustomizePizza'); // Navigate to CustomizePizza page with item ID
+    };
+
     const calculateItemTotal = (item) => {
         if (item.type === 'pizza') {
             return item.price && item.quantity ? item.price * item.quantity : 0;
@@ -73,7 +84,7 @@ const CartNew = ({ selectedOrderType, hideCheckoutButton }) => {
         setShowPromotions(false);
     };
 
-    const total = cart.reduce((total, item) => total + (item.price * item.quantity), 0) - discount;
+    const total = calculateTotalWithDiscount();
 
     return (
         <div className="cart-container" style={{ border: '3px solid black', padding: '10px', backgroundColor: 'white' }}>
@@ -111,12 +122,23 @@ const CartNew = ({ selectedOrderType, hideCheckoutButton }) => {
                                 {item.sauce && <p>{t("Sauce")}: {item.sauce}</p>}
                                 {item.cheese && <p>{t("Cheese")}: {item.cheese}</p>}
                             </div>
-                            <p style={{ flex: 1, marginRight: '10px', textAlign: 'center' }}>No:{item.quantity}</p>
+                            <select
+                                value={item.quantity}
+                                onChange={(e) => handleQuantityChange(itemId, parseInt(e.target.value))}
+                                style={{ flex: 1, marginRight: '10px', textAlign: 'center' }}
+                            >
+                                {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+                                    <option key={num} value={num}>{num}</option>
+                                ))}
+                            </select>
                             <p style={{ flex: 1, textAlign: 'right' }}> $.{(item.price * item.quantity).toFixed(2)}</p>
-                            <p style={{ flex: 1, textAlign: 'right' }} onClick={() => removeFromCart(itemId)} className='cross'>X</p>
+                            <div style={{ flex: 1, textAlign: 'right' }}>
+                                {/*<EditIcon onClick={() => handleEdit(item)} style={{ cursor: 'pointer', marginRight: '10px' }} />*/}
+                                <span onClick={() => removeFromCart(itemId)} className='cross'>X</span>
+                            </div>
                         </div>
                         <hr />
-                    </div>
+                    </div>  
                 ))}
             </div>
 
@@ -130,8 +152,8 @@ const CartNew = ({ selectedOrderType, hideCheckoutButton }) => {
                         </div>
                         <hr />
                         <div className='cart-total-details'>
-                            <p>{t("Discount")}</p>
-                            <p>$.{discount}</p>
+                            <p>{t("Tax")}</p>
+                            <p>$.0.02</p>
                         </div>
                         <hr />
                         <div className='cart-total-details'>

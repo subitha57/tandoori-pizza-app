@@ -8,6 +8,15 @@
 .size-quantity-crust {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Ensures vertical alignment */
+}
+.quantity{
+  margin-top: 2%;
+}
+.size-quantity-crust .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .right-half-container{
   margin-left: 40px;

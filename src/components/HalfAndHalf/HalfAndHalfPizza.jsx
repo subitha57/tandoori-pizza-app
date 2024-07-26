@@ -216,7 +216,7 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
       <div className='size-quantity-crust'>
 
         <FormControl fullWidth sx={{ mr: 2 }}>
-          <InputLabel htmlFor="size">Size:</InputLabel>
+          <label htmlFor="size">Size:</label>
           <Select
             id="size"
             value={size}
@@ -227,17 +227,25 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
           </Select>
         </FormControl>
 
-        <TextField
-          fullWidth sx={{ mr: 2 }}
-          id="quantity"
-          label="Quantity"
-          type="number"
-          value={quantity}
-          onChange={(e) => setQuantity(parseInt(e.target.value))}
-        />
-
+        <FormControl fullWidth sx={{ mr: 2 }}>
+      <label id="quantity-label">Quantity</label>
+      <Select
+        labelId="quantity-label"
+        id="quantity"
+        value={quantity}
+        label="Quantity"
+        onChange={(e) => setQuantity(parseInt(e.target.value))}
+      >
+        {Array.from({ length: 20 }, (_, i) => (
+          <MenuItem key={i + 1} value={i + 1}>
+            {i + 1}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+        
         <FormControl fullWidth>
-          <InputLabel htmlFor="crust">Crust:</InputLabel>
+          <label htmlFor="crust">Crust:</label>
           <Select
             id="crust"
             value={leftCrust}
@@ -269,7 +277,7 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
 
               <div className="customization-options">
                 <FormControl fullWidth sx={{ mb: 2 }}>
-                  <InputLabel>Select Pizza</InputLabel>
+                  <label>Select Pizza</label>
                   <Select
                     value={leftSelectedPizza ? leftSelectedPizza.Id : ''}
                     onChange={(e) => {
@@ -292,23 +300,23 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel htmlFor="cheese">Cheese:</InputLabel>
+                      <label htmlFor="cheese">Cheese:</label>
                       <Select
                         id="cheese"
                         value={leftCheese}
                         onChange={(e) => setLeftCheese(e.target.value)}
                       >
-                        <MenuItem value="None">None</MenuItem>
+                        
                         <MenuItem value="Light">Light</MenuItem>
                         <MenuItem value="Regular">Regular</MenuItem>
-                        <MenuItem value="Double">Double</MenuItem>
-                        <MenuItem value="Trible">Trible</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel htmlFor="cheese">Cheese:</InputLabel>
+                      <label htmlFor="cheese">Cheese:</label>
                       <Select
                         id="cheese"
                         value={leftCheeses}
@@ -327,23 +335,22 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel htmlFor="sauce">Sauce:</InputLabel>
+                      <label htmlFor="sauce">Sauce:</label>
                       <Select
                         id="sauce"
                         value={leftSauce}
                         onChange={(e) => setLeftSauce(e.target.value)}
                       >
-                        <MenuItem value="None">None</MenuItem>
-                        <MenuItem value="Light">Light</MenuItem>
+                       <MenuItem value="Light">Light</MenuItem>
                         <MenuItem value="Regular">Regular</MenuItem>
-                        <MenuItem value="Double">Double</MenuItem>
-                        <MenuItem value="Trible">Trible</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel className='sauce-cheese-options' htmlFor="sauces">Sauce:</InputLabel>
+                      <label className='sauce-cheese-options' htmlFor="sauces">Sauce:</label>
                       <Select
                         id="sauces"
                         value={leftSauces}
@@ -374,7 +381,7 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                       id={`cheese-${ingredient.Id}`}
                       name="cheese"
                       checked={leftSelectedIngredients.includes(ingredient.Id)}
-                      onChange={() => handleIngredientChange(ingredient.Id, 'right')}
+                      onChange={() => handleIngredientChange(ingredient.Id, 'left')}
                     />
                   }
                   label={ingredient.Name}
@@ -384,10 +391,10 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                     value={ingredientQuantities[ingredient.Id] || 'Regular'}
                     onChange={(e) => handleQuantityChange(ingredient.Id, e.target.value)}
                   >
-                    <MenuItem value="Light">Light</MenuItem>
-                    <MenuItem value="Regular">Regular</MenuItem>
-                    <MenuItem value="Double">Double</MenuItem>
-                    <MenuItem value="Triple">Triple</MenuItem>
+                  <MenuItem value="Light">Light</MenuItem>
+                        <MenuItem value="Regular">Regular</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                   </Select>
                 )}
               </Box>
@@ -418,10 +425,10 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                     value={ingredientQuantities[ingredient.Id] || 'Regular'}
                     onChange={(e) => handleQuantityChange(ingredient.Id, e.target.value)}
                   >
-                    <MenuItem value="Light">Light</MenuItem>
-                    <MenuItem value="Regular">Regular</MenuItem>
-                    <MenuItem value="Double">Double</MenuItem>
-                    <MenuItem value="Triple">Triple</MenuItem>
+                   <MenuItem value="Light">Light</MenuItem>
+                        <MenuItem value="Regular">Regular</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                   </Select>
                 )}
               </Box>
@@ -452,10 +459,10 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                     value={ingredientQuantities[ingredient.Id] || 'Regular'}
                     onChange={(e) => handleQuantityChange(ingredient.Id, e.target.value)}
                   >
-                    <MenuItem value="Light">Light</MenuItem>
-                    <MenuItem value="Regular">Regular</MenuItem>
-                    <MenuItem value="Double">Double</MenuItem>
-                    <MenuItem value="Triple">Triple</MenuItem>
+                   <MenuItem value="Light">Light</MenuItem>
+                        <MenuItem value="Regular">Regular</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                   </Select>
                 )}
               </Box>
@@ -485,7 +492,7 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
               </div>
               <div className="customization-options">
                 <FormControl fullWidth sx={{ mb: 2 }}>
-                  <InputLabel>Select Pizza</InputLabel>
+                  <label>Select Pizza</label>
                   <Select
                     value={rightSelectedPizza ? rightSelectedPizza.Id : ''}
                     onChange={(e) => {
@@ -508,23 +515,22 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel htmlFor="cheese">Cheese:</InputLabel>
+                      <label htmlFor="cheese">Cheese:</label>
                       <Select
                         id="cheese"
                         value={rightCheese}
                         onChange={(e) => setRightCheese(e.target.value)}
                       >
-                        <MenuItem value="None">None</MenuItem>
-                        <MenuItem value="Light">Light</MenuItem>
+                       <MenuItem value="Light">Light</MenuItem>
                         <MenuItem value="Regular">Regular</MenuItem>
-                        <MenuItem value="Double">Double</MenuItem>
-                        <MenuItem value="Trible">Trible</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel htmlFor="cheese">Cheese:</InputLabel>
+                      <label htmlFor="cheese">Cheese:</label>
                       <Select
                         id="cheese"
                         value={rightCheeses}
@@ -543,23 +549,22 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel htmlFor="sauce">Sauce:</InputLabel>
+                      <label htmlFor="sauce">Sauce:</label>
                       <Select
                         id="sauce"
                         value={rightSauce}
                         onChange={(e) => setRightSauce(e.target.value)}
                       >
-                        <MenuItem value="None">None</MenuItem>
-                        <MenuItem value="Light">Light</MenuItem>
+                      <MenuItem value="Light">Light</MenuItem>
                         <MenuItem value="Regular">Regular</MenuItem>
-                        <MenuItem value="Double">Double</MenuItem>
-                        <MenuItem value="Trible">Trible</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                       </Select>
                     </FormControl>
                   </Grid>
                   <Grid item xs={6}>
                     <FormControl fullWidth sx={{ mb: 2 }}>
-                      <InputLabel className='sauce-cheese-options' htmlFor="sauces">Sauces:</InputLabel>
+                      <label className='sauce-cheese-options' htmlFor="sauces">Sauces:</label>
                       <Select
                         id="sauces"
                         value={rightSauces}
@@ -600,10 +605,10 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                     value={ingredientQuantities[ingredient.Id] || 'Regular'}
                     onChange={(e) => handleQuantityChange(ingredient.Id, e.target.value)}
                   >
-                    <MenuItem value="Light">Light</MenuItem>
-                    <MenuItem value="Regular">Regular</MenuItem>
-                    <MenuItem value="Double">Double</MenuItem>
-                    <MenuItem value="Triple">Triple</MenuItem>
+                   <MenuItem value="Light">Light</MenuItem>
+                        <MenuItem value="Regular">Regular</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                   </Select>
                 )}
               </Box>
@@ -635,9 +640,9 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                     onChange={(e) => handleQuantityChange(ingredient.Id, e.target.value)}
                   >
                     <MenuItem value="Light">Light</MenuItem>
-                    <MenuItem value="Regular">Regular</MenuItem>
-                    <MenuItem value="Double">Double</MenuItem>
-                    <MenuItem value="Triple">Triple</MenuItem>
+                        <MenuItem value="Regular">Regular</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                   </Select>
                 )}
               </Box>
@@ -668,10 +673,10 @@ const HalfAndHalfPizza = ({ handleCloseHalfAndHalfPizza }) => {
                     value={ingredientQuantities[ingredient.Id] || 'Regular'}
                     onChange={(e) => handleQuantityChange(ingredient.Id, e.target.value)}
                   >
-                    <MenuItem value="Light">Light</MenuItem>
-                    <MenuItem value="Regular">Regular</MenuItem>
-                    <MenuItem value="Double">Double</MenuItem>
-                    <MenuItem value="Triple">Triple</MenuItem>
+                   <MenuItem value="Light">Light</MenuItem>
+                        <MenuItem value="Regular">Regular</MenuItem>
+                        <MenuItem value="Extra">Extra</MenuItem>
+                        
                   </Select>
                 )}
               </Box>

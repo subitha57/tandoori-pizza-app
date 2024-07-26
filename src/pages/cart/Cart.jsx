@@ -19,7 +19,8 @@ const Cart = () => {
     const [showPromotions, setShowPromotions] = useState(false);
     const [discount, setDiscount] = useState(0);
 
-    console.log("cart items", cart)
+    console.log("cart items", cart);
+    
     const handleViewPromotions = () => {
         setShowPromotions(true);
     };
@@ -52,9 +53,8 @@ const Cart = () => {
         }
     };
 
-    const calculateTotalWithDiscount = () => {
-        const totalPrice = getTotalPriceOfCartItems();
-        return totalPrice - discount;
+    const calculateSubtotal = () => {
+        return cart.reduce((total, item) => total + calculateItemTotal(item), 0);
     };
 
     const handleApplyPromotion = (offer) => {
@@ -63,7 +63,11 @@ const Cart = () => {
         setDiscount(discountAmount);
         setShowPromotions(false);
     };
-    const total = cart.reduce((total, item) => total + item.price * item.quantity, 0) - discount + (cart.length === 0 ? 0 : 2);
+
+    const subtotal = calculateSubtotal();
+    const tax = subtotal * 0.02;
+    const total = subtotal + tax + (subtotal > 0 ? 2 : 0); // Adding delivery fee of Rs. 2 if subtotal > 0
+
     return (
         <div className="cart">
             <div className="cart-items">
@@ -99,9 +103,9 @@ const Cart = () => {
                                         </>
                                     )} 
                                 </div>
-                                <p>$.{item.price.toFixed(2)}</p>
+                                <p>Rs.{item.price.toFixed(2)}</p>
                                 <p>{item.quantity}</p>
-                                <p> Rs.{(item.price * item.quantity).toFixed(2)}</p>
+                                <p>Rs.{(item.price * item.quantity).toFixed(2)}</p>
                                 <p onClick={() => removeFromCart(itemId)} className='cross'>X</p>
                             </div>
                             <hr />
@@ -116,17 +120,17 @@ const Cart = () => {
                     <div>
                         <div className='cart-total-details'>
                             <p>{t("SubTotal")}</p>
-                            Rs. {cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
+                            <p>Rs.{subtotal.toFixed(2)}</p>
                         </div>
                         <hr />
                         <div className='cart-total-details'>
-                            <p>{t("Discount")}</p>
-                            <p>Rs.{discount}</p>
+                        <p>{t("Tax (2%)")}</p>
+                        <p>Rs.{tax.toFixed(2)}</p>
                         </div>
                         <hr />
                         <div className='cart-total-details'>
                             <p>{t("Delivery Fee")}</p>
-                            <p>Rs.{getTotalPriceOfCartItems() === 0 ? 0 : 2}</p>
+                            <p>Rs.{subtotal > 0 ? 2 : 0}</p>
                         </div>
                         <hr />
                         <div className='cart-total-details'>

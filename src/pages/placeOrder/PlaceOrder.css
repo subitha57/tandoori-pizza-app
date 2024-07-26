@@ -1,16 +1,19 @@
+/* Place Order Container */
 .place-order {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 2px;
   padding-right: 10px;
   margin-top: 100px;
   flex-wrap: wrap;
+  border: 2px solid black;
 }
 
+/* Left Side - Products */
 .place-order-left {
   width: 100%;
-  max-width: max(30%, 500px);
+  max-width: 30%; /* Max width for larger screens */
 }
 
 .place-order-left .title {
@@ -29,15 +32,17 @@
   border-radius: 4px;
   outline-color: tomato;
 }
+
 .place-order-left .multi-fields {
   display: flex;
   gap: 10px;
 }
 
+/* Right Side - Order Details */
 .place-order-right {
   margin-top: 50px;
-  width: 80%;
-  max-width: max(40%, 500px);
+  width: 100%;
+  max-width: 40%; /* Max width for larger screens */
   background-color: antiquewhite;
 }
 
@@ -45,21 +50,7 @@
   margin-top: 30px;
 }
 
-.place-order {
-  display: flex;
-  flex-wrap: wrap;
-border: 2px solid black;
-}
-
-.place-order-left,
-.place-order-right {
-  flex: 1;
-}
-
-.place-order-left {
-  margin-right: 20px;
-}
-
+/* Terms and Conditions */
 .terms-and-conditions {
   margin-top: 20px;
 }
@@ -67,12 +58,16 @@ border: 2px solid black;
 .terms-and-conditions input[type="checkbox"] {
   margin-right: 10px;
 }
+
+/* Submit Button Container */
 .submit-button-container {
   display: flex;
   justify-content: center; /* Center the button */
   width: 100%;
   margin-top: 20px;
 }
+
+/* Loader Styles */
 .loader-container {
   position: fixed;
   top: 0;
@@ -95,7 +90,14 @@ border: 2px solid black;
   border-radius: 8px;
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+  .place-order-left,
+  .place-order-right {
+    max-width: 100%; /* Full width for medium screens */
+  }
+}
+
 @media screen and (max-width: 768px) {
   .place-order {
     flex-direction: column;
@@ -109,6 +111,7 @@ border: 2px solid black;
     flex: 1 1 100%;
     margin-right: 0;
   }
+
   .submit-button-container {
     justify-content: center; /* Ensure the button remains centered on small screens */
   }

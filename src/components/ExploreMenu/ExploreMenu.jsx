@@ -24,7 +24,7 @@ const ExploreMenu = ({ setCategory, category, isDarkTheme }) => {
               onClick={() => setCategory(item.menu_name)}
               className={`menu-button ${category === item.menu_name ? "active" : ""} ${isDarkTheme ? 'dark-button' : ''}`}
               sx={{
-                padding: '16px 24px', 
+                padding: '20px 48px', 
                 fontSize: '16px'
               }}
             >

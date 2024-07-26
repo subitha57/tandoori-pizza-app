@@ -1,5 +1,8 @@
 .food-display {
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .food-display h2 {
@@ -9,12 +12,12 @@
 }
 
 .food-item.selected {
-  animation: blink 1s infinite;
+  animation: blink 1s infinite; 
 }
 
 .food-display-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* Always two columns */
   margin-top: 30px;
   gap: 30px;
   row-gap: 50px;
@@ -23,11 +26,14 @@
 
 .food-item {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 10px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 200px; /* Set a minimum height for consistent sizing */
 }
 
 .food-item h3 {
@@ -46,8 +52,9 @@
   margin: 10px 0;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  justify-content: space-between;
   gap: 16px;
+  flex-grow: 1; /* Allows the options section to grow and fill available space */
 }
 
 .food-item-options-actions {
@@ -62,13 +69,18 @@
 
 .customize-button,
 .add-to-cart-button {
-  width: 150px;
-  height: 40px;
+  flex: 1; /* Ensure both buttons take up equal space */
+  height: auto;
   font-size: 16px;
   padding: 8px 16px;
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  text-align: center; /* Center the text */
+  display: flex; /* Use flexbox for button content */
+  justify-content: center; /* Center the text horizontally */
+  align-items: center; /* Center the text vertically */
 }
 
 .customize-button {
@@ -84,6 +96,7 @@
   grid-template-columns: 1fr 2fr; /* 1 part for cart-container, 2 parts for food display */
   gap: 20px;
   position: relative;
+  margin-top: 0;
 }
 
 .cart-container {
@@ -95,15 +108,15 @@
 }
 
 .food-display-container {
-  grid-column: 2;
-  padding-top: 0px;
+  grid-column: 3;
+ 
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr; /* Stack vertically on medium screens */
-    gap: 10px;
+    gap: 5px;
   }
 
   .cart-container {
@@ -115,9 +128,18 @@
     grid-column: 1 / -1; /* Full width on smaller screens */
   }
 
+  .food-display-list {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on medium screens */
+  }
+
+  .food-item {
+    min-height: 100px; /* Adjust height for medium screens */
+  }
+
   .food-item-buttons {
     flex-direction: column; /* Stack buttons vertically on smaller screens */
-    gap: 8px;
+    gap: 6px;
+  
   }
 
   .customize-button,
@@ -134,9 +156,13 @@
   }
 
   .food-display-list {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Adjust for smaller screens */
+    grid-template-columns: repeat(2, 1fr); /* Two columns on small screens */
     gap: 20px;
     row-gap: 30px;
+  }
+
+  .food-item {
+    min-height: 300px; /* Adjust height for small screens */
   }
 
   .food-item h3 {
@@ -153,6 +179,10 @@
     grid-template-columns: 1fr; /* Single column for very small screens */
     gap: 15px;
     row-gap: 25px;
+  }
+
+  .food-item {
+    min-height: 250px; /* Adjust height for very small screens */
   }
 
   .food-item h3 {

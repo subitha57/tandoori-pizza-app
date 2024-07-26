@@ -49,15 +49,7 @@ const FoodItem = ({
   };
 
   const handleAddToCart = () => {
-    if (!isLoggedIn) {
-      alert("Please login.");
-      return;
-    }
-
-    if (!cartRestaurant) {
-      alert("Please select a restaurant before adding items to the cart.");
-      return;
-    }
+   
 
     addToCart({
       id,
@@ -81,7 +73,7 @@ const FoodItem = ({
     <div className='food-item'>
       <div className='food-item-image-container'>
         <img className='food-item-image' src={image || defaultPizzaImage} alt={name} />
-        {showAddToCartButton && (
+        {/*{showAddToCartButton && (
           !isAddedToCart ? (
             <img
               className='add'
@@ -96,7 +88,7 @@ const FoodItem = ({
               <img onClick={handleAddToCart} src={assets.add_icon_green} alt="Add to cart" />
             </div>
           )
-        )}
+        )}*/}
       </div>
       <div className='food-item-info'>
         <div className='food-item-name-rating'>
@@ -105,23 +97,7 @@ const FoodItem = ({
         </div>
       </div>
       <p className={`food-item-desc ${darkTheme ? 'light-input' : 'dark-input'}`}>{description}</p>
-    {/*  <div className='food-item-options'>
-        {sizes.length > 0 && (
-          <select value={selectedSize} onChange={(e) => setSelectedSize(e.target.value)}>
-            {sizes.map((size) => (
-              <option key={size.id} value={size}>
-                {size.name} - {size.price}
-              </option>
-            ))}
-          </select>
-        )}
-        <input
-          type="number"
-          value={quantity}
-          onChange={(e) => setQuantity(parseInt(e.target.value))}
-          min="1"
-        />
-      </div>*/}
+    
     </div>
   );
 };

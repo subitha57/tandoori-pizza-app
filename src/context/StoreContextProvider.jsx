@@ -28,6 +28,8 @@ const StoreContextProvider = (props) => {
   const [cartRestaurant, setCartRestaurant] = useState(null);
   const [extraPrice, setExtraPrice] = useState(0); // Extra price for customizations
   const [selectedOrderType, setSelectedOrderType] = useState(null);
+  const [defaultIngredientIds, setDefaultIngredientIds] = useState([]);
+  const [fixedIngredientIds, setFixedIngredientIds] = useState([]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -67,6 +69,9 @@ const StoreContextProvider = (props) => {
       const allProducts = response.data.Products;
       const sizes = response.data.Sizes;
       const prices = response.data.Prices;
+
+      setDefaultIngredientIds(response.data.DefaultIngredientIds || []);
+      setFixedIngredientIds(response.data.FixedIngredientIds || []);
 
       const updatedProducts = allProducts.map(product => {
         if (product.CategoryType === 2 && product.ExtraPrice === undefined) {
@@ -114,7 +119,12 @@ const StoreContextProvider = (props) => {
       setLoading(false);
     }
   };
-
+  const updateQuantity = (itemId, newQuantity) => {
+    setCart(cart.map((item, index) => 
+        index === itemId ? { ...item, quantity: newQuantity } : item
+    ));
+  }
+  
   const addToCart = (item, crust, sauce, aCheese, pCheese, toppings) => {
     const customizedItem = {
       ...item,
@@ -132,21 +142,25 @@ const StoreContextProvider = (props) => {
     setCart((prevCart) => prevCart.filter((item, index) => index !== itemId));
   };
 
-  const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const item of cart) {
-      totalAmount += item.price;
-    }
-    return totalAmount;
-  };
+  // Calculate total cart amount including tax
+const getTotalCartAmount = () => {
+  let totalAmount = 0;
+  for (const item of cart) {
+    totalAmount += item.price * item.quantity;
+  }
+  const tax = totalAmount * 0.02; // 2% tax
+  return totalAmount + tax;
+};
 
-  const getTotalPriceOfCartItems = () => {
-    let totalPrice = 0;
-    for (const item of cart) {
-      totalPrice += item.price;
-    }
-    return totalPrice;
-  };
+// Calculate total price of cart items including tax
+const getTotalPriceOfCartItems = () => {
+  let totalPrice = 0;
+  for (const item of cart) {
+    totalPrice += item.price * item.quantity;
+  }
+  const tax = totalPrice * 0.02; // 2% tax
+  return totalPrice + tax;
+};
 
   const contextValue = {
     products,
@@ -182,6 +196,9 @@ const StoreContextProvider = (props) => {
   updateExtraPrice  ,
   selectedOrderType,
     setSelectedOrderType,
+    defaultIngredientIds,
+    fixedIngredientIds,
+    updateQuantity
   };
 
   return (
