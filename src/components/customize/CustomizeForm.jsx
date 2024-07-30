@@ -30,9 +30,14 @@ const CustomizePizza = ({ selectedPizza, onClose, setPrice  }) => {
   const [showHalfAndHalfPizza, setShowHalfAndHalfPizza] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false); 
 
+
   useEffect(() => {
-    console.log("Selected Pizza Name:", selectedPizzaName);
-  }, [selectedPizzaName]);
+    if (selectedPizza) {
+        setSelectedPizzaState(selectedPizza);
+        setSelectedPizzaName(selectedPizza.Name);
+    }
+}, [selectedPizza]);
+  
 
   const handleOpen = () => {
     setOpen(true);
@@ -49,7 +54,6 @@ const CustomizePizza = ({ selectedPizza, onClose, setPrice  }) => {
     console.log("Selected Pizza Name:", selectedPizzaName);
   }, [selectedPizzaName]);
 
-  console.log("Passing selectedPizzaName to HalfAndHalfPizza:", selectedPizzaName);
 
   const FIXED_INGREDIENT_COST = 2;
 
@@ -117,48 +121,29 @@ const CustomizePizza = ({ selectedPizza, onClose, setPrice  }) => {
    
       addPizzaToCart();
       }; 
-  const addPizzaToCart = () => {
-    const deselectedDefaultIngredients = selectedPizzaState.DefaultIncrediantIds.filter(
-      (id) => !selectedIngredients.includes(id)
-    );
-
-    const customizedPizza = {
-      name: selectedPizzaState.Name,
-      size,
-      price: localPrice,
-      quantity,
-      image: selectedPizzaState.Image || defaultImage,
-      cheese:
-        deselectedDefaultIngredients.length > 0
-          ? "None "
-          : selectedIngredients
-            .filter((id) =>
-              aCheeses.concat(pCheeses).map((option) => option.Id).includes(id)
-            )
-            .map(
-              (id) =>
-                aCheeses
-                  .concat(pCheeses)
-                  .find((option) => option.Id === id).Name
-            )
-            .join(", "),
-      meat: selectedIngredients
-        .filter((id) => meats.map((option) => option.Id).includes(id))
-        .map((id) => meats.find((option) => option.Id === id).Name)
-        .join(", "),
-      vegetable: selectedIngredients
-        .filter((id) => vegetables.map((option) => option.Id).includes(id))
-        .map((id) => vegetables.find((option) => option.Id === id).Name)
-        .join(", "),
-    };
-
-    addToCart(customizedPizza);
-
-    onClose();
-  };
-
-  
-
+      const addPizzaToCart = () => {
+        const additionalIngredients = selectedIngredients.filter(id => !selectedPizzaState.DefaultIncrediantIds.includes(id));
+    
+        const customizedPizza = {
+          name: selectedPizzaState.Name,
+          size,
+          price: localPrice,
+          quantity,
+          image: selectedPizzaState.Image || defaultImage,
+          cheese: additionalIngredients.filter(id => aCheeses.concat(pCheeses).map(option => option.Id).includes(id))
+            .map(id => `${aCheeses.concat(pCheeses).find(option => option.Id === id).Name} (${cheeseCustomizations[id] || 'Regular'})`)
+            .join(", ") || "",
+          meat: additionalIngredients.filter(id => meats.map(option => option.Id).includes(id))
+            .map(id => `${meats.find(option => option.Id === id).Name} (${meatCustomizations[id] || 'Regular'})`)
+            .join(", ") || "",
+          vegetable: additionalIngredients.filter(id => vegetables.map(option => option.Id).includes(id))
+            .map(id => `${vegetables.find(option => option.Id === id).Name} (${vegetableCustomizations[id] || 'Regular'})`)
+            .join(", ") || "",
+        };
+    
+        addToCart(customizedPizza);
+        onClose();
+      };
   const handleIngredientChange = (id) => {
     if (isDefaultIngredient(id)) {
       setSelectedIngredients((prevIngredients) => prevIngredients.filter(ingredientId => !isDefaultIngredient(ingredientId)));

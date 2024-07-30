@@ -1,5 +1,5 @@
 .food-display {
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,14 +10,87 @@
   font-weight: 600;
   color: navy;
 }
+.light-theme .food-item {
+  background-color: #f9f9f9;
+  color: #333; /* Ensure text color is set for light theme */
+}
+/* Light Theme */
+body.light-theme .food-display-container {
+  background-color: #fff;
+  color: #000;
+}
 
+body.light-theme .food-item {
+  border: 1px solid #ddd;
+}
+
+body.light-theme .food-item-options {
+  background-color: #f9f9f9;
+}
+
+body.light-theme .apply-promotion-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Dark Theme */
+body.dark-theme .food-display-container {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-theme .food-item {
+  border: 1px solid #555;
+}
+
+body.dark-theme .food-item-options {
+  background-color: #444;
+}
+
+body.dark-theme .apply-promotion-button {
+  background-color: #007bff;
+  color: #fff;
+}
+/* Add these styles to your FoodDisplay.css */
+
+/* Common styles */
+.input-label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Light theme styles */
+.light-theme .input-label {
+  color: #333;
+}
+
+.light-theme .MuiSelect-root {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Dark theme styles */
+.dark-theme .input-label {
+  color: #fff;
+}
+
+.dark-theme .MuiSelect-root {
+  background-color: #424242;
+  color: #fff;
+}
+
+/* Dark theme styles */
+.dark-theme .food-item {
+  background-color: #444;
+  color: #fff; /* Ensure text color is set for dark theme */
+}
 .food-item.selected {
   animation: blink 1s infinite; 
 }
 
 .food-display-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Always two columns */
+  grid-template-columns: repeat(3, 1fr); /* Always two columns */
   margin-top: 30px;
   gap: 30px;
   row-gap: 50px;
@@ -38,7 +111,7 @@
 
 .food-item h3 {
   margin: 10px 0;
-  font-size: 18px;
+  font-size: 22px;
   text-align: center;
 }
 
@@ -53,18 +126,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 16px;
-  flex-grow: 1; /* Allows the options section to grow and fill available space */
+  gap: 0px;
+  padding-right: 2%;
+  /* Allows the options section to grow and fill available space */
 }
-
+.bold-label {
+  
+  font-weight: bold;
+  font-size: 20px;
+}
 .food-item-options-actions {
   display: flex;
   justify-content: space-between;
+ 
 }
 
 .food-item-buttons {
   display: flex;
   gap: 10px;
+  margin-top: 5%;
 }
 
 .customize-button,
@@ -102,7 +182,7 @@
 .cart-container {
   display: inline-block;
   margin-right: 2%;
-  margin-top: 15%;
+  margin-top: 5%;
   position: sticky;
   grid-column: 1;
 }
@@ -110,6 +190,23 @@
 .food-display-container {
   grid-column: 3;
  
+}
+.category-heading {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: max(2vw, 24px);
+  font-weight: 600;
+  color: navy;
+  position: relative;
+}
+
+.category-heading::before,
+.category-heading::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid navy;
+  margin: 0 10px;
 }
 
 /* Responsive Design */

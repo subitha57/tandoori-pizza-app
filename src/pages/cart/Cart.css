@@ -90,6 +90,7 @@
 }
 
 .cart-promocode-input button {
+  margin-bottom: 2.5%;
   width: max(10vw, 150px);
   padding: 12px 5px;
   background-color: black;
@@ -228,4 +229,59 @@
 
 .light-text {
   color: black;
+}
+/* Light Mode Styles */
+.light-mode .cart-container {
+  border: 3px solid black;
+  padding: 10px;
+  background-color: white;
+  color: black;
+}
+
+.light-mode .cart-container h2,
+.light-mode .cart-container h3 {
+  color: navy;
+}
+
+.light-mode .cart-items,
+.light-mode .cart-bottom {
+  background-color: white;
+  color: black;
+}
+
+.light-mode .cart-item-details p,
+.light-mode .cart-items-title p {
+  color: black;
+}
+
+.light-mode .cart-total h2 {
+  color: navy;
+}
+
+/* Dark Mode Styles */
+.dark-mode .cart-container {
+  border: 3px solid #333;
+  padding: 10px;
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.dark-mode .cart-container h2,
+.dark-mode .cart-container h3 {
+  color: #a3b3c2; /* Light navy or custom color for dark mode */
+}
+
+.dark-mode .cart-items,
+.dark-mode .cart-bottom {
+  background-color: #2b2b2b;
+  color: white;
+}
+
+.dark-mode .cart-item-details p,
+.dark-mode .cart-items-title p {
+  color: white;
+}
+
+.dark-mode .cart-total h2 {
+  color: #a3b3c2; /* Light navy or custom color for dark mode */
 }

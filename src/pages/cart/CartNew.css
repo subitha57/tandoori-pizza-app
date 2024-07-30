@@ -1,0 +1,85 @@
+.cart-item {
+    margin-bottom: 15px;
+}
+
+.cart-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.cart-item-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-select {
+    width: 60px;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+.cart-item-action {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 20px; /* Add space between Edit and Remove */
+}
+
+.cart-container-inner {
+    border: 3px solid black;
+    padding: 10px;
+    background-color: white;
+}
+
+.selected-restaurant, .selected-order-type {
+    margin-bottom: 10px;
+}
+
+.cart-total-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-bottom {
+    margin-top: 0; /* Remove margin-top to eliminate space */
+}
+
+.cart-promocode-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.coupon-error {
+    color: red;
+}
+.promotions-link {
+    color: black; /* Adjust the color as needed */
+    text-decoration: underline;
+    font-weight: bold; /* Optional: Make the text bold */
+  }
+  
+  .promotions-link:hover {
+    text-decoration: none; /* Optional: Remove underline on hover */
+    color: #0056b3; /* Adjust the hover color as needed */
+  }
+  .cart-item-toppings {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.cart-item-toppings p {
+    margin: 0;
+}
+/* CartNew.css */
+.green-text {
+    color: green;
+  }
+  
+  .red-text {
+    color: red;
+  }
+  

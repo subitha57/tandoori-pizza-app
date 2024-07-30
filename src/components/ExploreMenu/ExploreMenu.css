@@ -1,4 +1,4 @@
-/* Explore Menu Container */
+/* Existing Styles */
 .explore-menu {
     text-align: center;
     padding: 20px;
@@ -17,30 +17,27 @@
     color: #ccc;
 }
 
-/* Sticky Container */
 .sticky-container {
     position: relative;
-    top: 40px; /* Adjust this value based on your navbar height */
+    top: 55px;
     left: 0;
     width: 100%;
     background-color: inherit;
-    z-index: 900; /* Ensure it's below the navbar */
-    padding: 21px 0; /* Optional: add some padding around the button group */
+    z-index: 900;
+    padding: 21px 0;
 }
 
-/* Explore Menu List */
 .explore-menu-list {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
 }
 
-/* Menu Button */
 .menu-button {
     border-radius: 0;
-    padding: 16px 20px; /* Adjusted padding for button size */
-    font-size: 16px; /* Adjusted font size */
-    margin: 5px; /* Add margin to prevent buttons from sticking together on small screens */
+    padding: 16px 20px;
+    font-size: 16px;
+    margin: 5px;
 }
 
 .menu-button:first-child {
@@ -61,6 +58,38 @@
     background-color: #777;
 }
 
+/* Dropdown Menu Styles */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 16px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    flex-direction: column;
+}
+
+.dropdown-content .menu-button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
     .explore-menu {
@@ -68,12 +97,16 @@
     }
 
     .menu-button {
-        padding: 12px 18px; /* Reduced padding for smaller screens */
-        font-size: 14px; /* Reduced font size for smaller screens */
+        padding: 12px 18px;
+        font-size: 14px;
     }
 
     .sticky-container {
-        top: 60px; /* Adjust top value for smaller screens */
+        top: 60px;
+    }
+
+    .dropdown-content {
+        display: flex;
     }
 }
 
@@ -83,11 +116,11 @@
     }
 
     .menu-button {
-        padding: 10px 15px; /* Further reduced padding for very small screens */
-        font-size: 12px; /* Further reduced font size for very small screens */
+        padding: 10px 15px;
+        font-size: 12px;
     }
 
     .sticky-container {
-        top: 80px; /* Further adjust top value for very small screens */
+        top: 80px;
     }
 }

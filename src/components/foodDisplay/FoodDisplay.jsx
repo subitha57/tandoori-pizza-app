@@ -51,7 +51,7 @@ const FoodDisplay = ({ category }) => {
     
       try {
         // Fetch data for the first ID to get all products
-        const response = await axios.get(`https://test.tandooripizza.com/Online/OnlineHome/GetData?id=${uniqueIds[0]}`);
+        const response = await axios.get(`https://test.tandooripizza.com/api/online/store/getData?id=${uniqueIds[0]}`);
         const products = response.data.Products || [];
     
         // Create a map for quick lookup
@@ -162,36 +162,36 @@ const FoodDisplay = ({ category }) => {
   const renderItems = () => {
     const renderFoodItemOptions = (item, isPizza = false) => (
       <div className="food-item-options">
-        {isPizza && (
-          <FormControl fullWidth >
-            <label htmlFor="size" className="input-label">{t('Size')}</label>
-            <Select
-              id="size"
-              value={size}
-              onChange={(e) => setSize(e.target.value)}
-            >
-              <MenuItem value="Small">Small</MenuItem>
-              <MenuItem value="Medium">Medium</MenuItem>
-              <MenuItem value="Large">Large</MenuItem>
-              <MenuItem value="Extra Large">Extra Large</MenuItem>
-            </Select>
-          </FormControl>
-        )}
-        <FormControl fullWidth >
-          <label htmlFor="quantity" className="input-label">{t('Quantity')}</label>
-          <Select
-            id="quantity"
-            value={quantities[item.Id] || 1}
-            onChange={(e) => handleQuantityChange(item.Id, parseInt(e.target.value))}
-            fullWidth
+      {isPizza && (
+        <div className="form-control">
+          <label htmlFor="size" className="input-label bold-label">{t('Size')}</label>
+          <select
+            id="size"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
           >
-            {Array.from({ length: 20 }, (_, i) => (
-              <MenuItem key={i + 1} value={i + 1}>
-                {i + 1}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+            <option value="Extra Large">Extra Large</option>
+          </select>
+        </div>
+      )}
+      <div className="form-control">
+        <label htmlFor="quantity" className="input-label bold-label">{t('Quantity')}</label>
+        <select
+          id="quantity"
+          value={quantities[item.Id] || 1}
+          onChange={(e) => handleQuantityChange(item.Id, parseInt(e.target.value))}
+          fullWidth
+        >
+          {Array.from({ length: 20 }, (_, i) => (
+            <option key={i + 1} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
+        </select>
+      </div>
         <div className="food-item-buttons">
           {isPizza && (
             <Button
@@ -259,12 +259,12 @@ const FoodDisplay = ({ category }) => {
 
   return (
     <div className="container">
+     
       <div className="cart-container">
         <CartNew selectedOrderType={selectedOrderType} />
       </div>
       <div className="food-display-container">
-        <div className="food-display" id="food-display">
-          <h2>
+      <h2 className="category-heading">
             {category === 'Beverages'
               ? t('Beverages')
               : category === 'Appetizers'
@@ -273,6 +273,8 @@ const FoodDisplay = ({ category }) => {
               ? t('Extras')
               : t('Pizza')}
           </h2>
+        <div className="food-display" id="food-display">
+         
           <div className="food-display-list">{renderItems()}</div>
           <p>Total Price: ${totalPrice}</p>
           {showCustomizeForm && selectedPizza && (

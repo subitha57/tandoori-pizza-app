@@ -32,6 +32,7 @@ import FoodDisplay from './components/foodDisplay/FoodDisplay.jsx';
 import LoginModal from './components/login/LoginModal.jsx'; // Ensure LoginModal is imported
 import ViewOrderDetails from './components/Order Type/PreviousOrder/ViewOrderDetails.jsx';
 import RestaurantList from './pages/location/RestaurantList.jsx';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -134,7 +135,8 @@ function App() {
           <Route path="/LoginModal" element={<LoginModal onLoginSuccess={handleLoginSuccess} />} /> {/* Adjust the route path for LoginModal */}
           <Route path='/' element={<ExploreMenu />} />
           <Route path="/PlaceOrder" element={<PlaceOrder />} />
-          <Route path="/CustomizePizza" element={<CustomizeForm onSelect={handleSelect} />} />
+          <Route path="/CustomizePizza" element={<CustomizeForm onSelect={handleSelect} 
+           />} />
           
           <Route path="/ExploreMenu" element={<ExploreMenu />} />
           <Route path="/ScrollButton" element={<ScrollButton />} />

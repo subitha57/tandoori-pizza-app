@@ -1,94 +1,98 @@
 body, html {
-    height: 100%;
-    margin: 0;
-  }
-  
-  #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .light-theme {
-    background-color: skyblue;
-    color: #333;
-  }
-  
-  .dark-theme {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  body {
-    min-height: 100vh;
-    background-color: skyblue;
-  }
-  
-  .dark-theme body {
-    background-color: #333;
-  }
-  
-  .theme-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    color: white;
-    position: fixed;
-    top: 14px;
-    right: 70px; /* Adjust to create space for both buttons */
-    z-index: 2;
-  }
-  
-  .dark-theme .theme-button {
-    color: white;
-  }
-  
-  .light-theme .theme-button {
-    color: black;
-  }
-  
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.light-theme {
+  background-color: skyblue;
+  color: #333;
+}
+
+.dark-theme {
+  background-color: #333;
+  color: #fff;
+}
+
+body {
+  min-height: 100vh;
+  background-color: skyblue;
+}
+
+.dark-theme body {
+  background-color: #333;
+}
+
+.theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: white;
+  position: fixed;
+  top: 14px;
+  right: 70px; /* Adjust to create space for both buttons */
+  z-index: 2;
+  margin-top: 6%;
+}
+
+.dark-theme .theme-button {
+  color: white;
+}
+
+.light-theme .theme-button {
+  color: black;
+}
+
+.top-right-corner {
+  margin-top: 5.4%;
+  margin-right: 1.5%;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.top-right-corner .theme-button {
+  margin-left: 2px; /* Reduced margin-left to reduce gap */
+}
+
+@media screen and (max-width: 600px) {
   .top-right-corner {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    z-index: 2;
+    top: 6px;
+    margin-right: 1.5%;
+    right: 10px;
+    flex-direction: row; /* Ensure row layout on smaller screens */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
   }
-  
-  .top-right-corner .theme-button {
-    margin-left: 10px;
+
+  .theme-button {
+    right: 60px; /* Adjust position for smaller screens */
   }
-  
-  @media screen and (max-width: 600px) {
-    .top-right-corner {
-      top: 5px;
-      right: 10px;
-      flex-direction: row; /* Ensure row layout on smaller screens */
-      justify-content: center; /* Center content horizontally */
-      align-items: center; /* Center content vertically */
-    }
-  
-    .theme-button {
-      right: 60px; /* Adjust position for smaller screens */
-    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .top-right-corner {
+    margin-top: 2%;
+    margin-right: 1.5%;
+    top: 5px;
+    right: 10px;
+    flex-direction: row; /* Ensure row layout on smaller screens */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .top-right-corner {
-        margin-top: 2%;
-      top: 5px;
-      right: 10px;
-      flex-direction: row; /* Ensure row layout on smaller screens */
-      justify-content: center; /* Center content horizontally */
-      align-items: center; /* Center content vertically */
-    }
-  
-    .theme-button {
-      margin-left: 10px; /* Ensure proper spacing between buttons */
-      margin-top: 0; /* Remove top margin to align with the top-right-corner */
-    }
+
+  .theme-button {
+    margin-left: 2px; /* Reduced margin-left to reduce gap */
+    margin-top: 0; /* Remove top margin to align with the top-right-corner */
   }
-  
+}

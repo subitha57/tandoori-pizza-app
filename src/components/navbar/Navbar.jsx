@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './Navbar.css';
+import { assets } from '../../assets/assets';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContextProvider';
 import LoginModal from '../login/LoginModal';
 import { useTranslation } from 'react-i18next';
+import logo from '../../assets/logo_tp-removebg-preview.png'; 
 
 const Navbar = ({ darkMode }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation(); 
   const [menu, setMenu] = useState("home");
   const { getTotalCartAmount } = useContext(StoreContext);
   const [showLogin, setShowLogin] = useState(false);
@@ -15,7 +17,11 @@ const Navbar = ({ darkMode }) => {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   const navigate = useNavigate();
   const location = useLocation(); // Get current location
+ const [showCart, setShowCart] = useState(false);
 
+  const toggleCart = () => {
+    setShowCart(!showCart);
+  };
   useEffect(() => {
     const fetchSelectedRestaurant = () => {
       const restaurant = localStorage.getItem('selectedRestaurant');
@@ -59,13 +65,11 @@ const Navbar = ({ darkMode }) => {
   return (
     <div className={`navbar ${darkMode ? 'dark-mode' : ''}`}>
       <Link to='/' className='navbar-title'>
-        <h1>{t("Tandoori Pizza")}</h1>
+       {/* <h1>{t("Tandoori Pizza")}</h1>*/}
+       <img src={logo} alt='Tandoori Pizza Logo' className='logo_tp' />
+      
       </Link>
-      {selectedRestaurant && location.pathname !== '/' && (
-        <div className="restaurant-address">
-          <p>{selectedRestaurant.BusinessAddress1}</p>
-        </div>
-      )}
+      
       <ul className='navbar-menu'>
         {isAuthenticated && (
           <Link to='/PreviousOrder' className='past-orders-link' onClick={() => setMenu('previous-order-page')}>
@@ -73,6 +77,10 @@ const Navbar = ({ darkMode }) => {
           </Link>
         )}
       </ul>
+      <div className='navbar-search-icon'>
+          <Link to='/CartNew'><img src={assets.basket_icon} alt="" /></Link>
+          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+        </div>
       <div className='navbar-right'>
         {isAuthenticated ? (
           <button onClick={handleSignOut}>{t("Sign Out")}</button>

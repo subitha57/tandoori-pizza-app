@@ -30,7 +30,7 @@ const StoreContextProvider = (props) => {
   const [selectedOrderType, setSelectedOrderType] = useState(null);
   const [defaultIngredientIds, setDefaultIngredientIds] = useState([]);
   const [fixedIngredientIds, setFixedIngredientIds] = useState([]);
-
+  const [selectedPizza, setSelectedPizza] = useState(null);
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
@@ -138,9 +138,15 @@ const StoreContextProvider = (props) => {
     setCart((prevCart) => [...prevCart, customizedItem]);
   };
 
-  const removeFromCart = (itemId) => {
-    setCart((prevCart) => prevCart.filter((item, index) => index !== itemId));
+  const removeFromCart = (index) => {
+    console.log('Removing item with index:', index);
+    setCart((prevCart) => {
+      const updatedCart = prevCart.filter((_, i) => i !== index);
+      console.log('Updated cart:', updatedCart);
+      return updatedCart;
+    });
   };
+  
 
   // Calculate total cart amount including tax
 const getTotalCartAmount = () => {
@@ -198,7 +204,9 @@ const getTotalPriceOfCartItems = () => {
     setSelectedOrderType,
     defaultIngredientIds,
     fixedIngredientIds,
-    updateQuantity
+    updateQuantity,
+    selectedPizza,
+     setSelectedPizza 
   };
 
   return (

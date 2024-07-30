@@ -92,8 +92,7 @@ const FoodItem = ({
       </div>
       <div className='food-item-info'>
         <div className='food-item-name-rating'>
-          <p>{name}</p>
-          <img src={assets.rating_starts} alt="Rating" />
+        <p style={{ fontWeight: 'bold' }}>{name}</p>
         </div>
       </div>
       <p className={`food-item-desc ${darkTheme ? 'light-input' : 'dark-input'}`}>{description}</p>

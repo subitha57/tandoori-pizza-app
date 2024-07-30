@@ -17,8 +17,10 @@ a{
 }
 .app{
   
-    width: 80%;
+    width: 100%;
     margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 @keyframes identifier {
     0%{
